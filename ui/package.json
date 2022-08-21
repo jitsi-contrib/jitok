@@ -1,5 +1,5 @@
 {
-  "name": "galaxy-ui",
+  "name": "jitok-ui",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
-    "@sveltejs/adapter-static": "^1.0.0-next.39",
+    "@sveltejs/adapter-node": "^1.0.0-next.86",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
