@@ -7,8 +7,15 @@ environment.
 export const API_URL = "http://127.0.0.1:9000/api";
 ```
 
-#### running
+#### running (dev)
 
 ```bash
 npm run dev -- --host --port 3000
+```
+
+#### running (prod)
+
+```bash
+npm run build
+node build/index.js
 ```
