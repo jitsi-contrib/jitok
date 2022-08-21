@@ -1,5 +1,5 @@
 #### running
 
 ```bash
-(cd /home/jitok/ui; npm run dev -- --host --port 3000)
+npm run dev -- --host --port 3000
 ```
