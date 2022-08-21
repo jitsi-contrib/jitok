@@ -78,8 +78,16 @@
         <FieldText name="iss" required={false} bind:value={payload.iss} />
         <FieldText name="sub" required={false} bind:value={payload.sub} />
         <FieldText name="room" required={false} bind:value={payload.room} />
-        <FieldNumber name="nbf (sec)" required={false} bind:value={payload.nbf} />
-        <FieldNumber name="exp (sec)" required={false} bind:value={payload.exp} />
+        <FieldNumber
+          name="nbf (sec)"
+          required={false}
+          bind:value={payload.nbf}
+        />
+        <FieldNumber
+          name="exp (sec)"
+          required={false}
+          bind:value={payload.exp}
+        />
       </div>
 
       <div class="col-lg text-center" style="max-width:540px;">
@@ -162,7 +170,7 @@
   <hr />
 
   <div class="row justify-content-center">
-    <div class="col input-group my-3"  style="max-width:540px;">
+    <div class="col input-group my-3" style="max-width:540px;">
       <input type="text" class="form-control" id="host" bind:value={host} />
       <button
         class="btn btn-secondary input-group-text"
