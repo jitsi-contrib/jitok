@@ -1,5 +1,7 @@
 # Jitok
 
+Jitsi token generator API and UI
+
 ## Demo
 
 [jitok.emrah.com](https://jitok.emrah.com/)
