@@ -5,7 +5,7 @@
         <h4 class="text-muted">Welcome to Jitok</h4>
         <a
           class="small text-muted my-0"
-          href="https://github.com/emrahcom/emrah-tools/tree/main/jitsi/jitok"
+          href="https://github.com/jitsi-contrib/jitok"
         >
           GitHub repo
         </a>
