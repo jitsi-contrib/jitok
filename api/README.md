@@ -1,4 +1,4 @@
-#### install
+#### installation
 
 Install packages as `root`:
 
