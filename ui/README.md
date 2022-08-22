@@ -2,13 +2,13 @@
 
 - Install `nodejs` and `git` packages.
 
-- Get a copy of the repo (don't run as root):
+- Get a copy of the repo (don't run as `root`):
 
 ```bash
 git clone https://github.com/jitsi-contrib/jitok.git
 ```
 
-- Install `npm` modules (don't run as root):
+- Install `npm` modules (don't run as `root`):
 
 ```bash
 cd jitok/ui

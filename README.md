@@ -2,6 +2,9 @@
 
 Jitsi token generator API and UI
 
+- [API](/api)
+- [UI](/ui)
+
 ## Demo
 
 [jitok.emrah.com](https://jitok.emrah.com/)

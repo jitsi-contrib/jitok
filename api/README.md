@@ -1,12 +1,12 @@
 #### installation
 
-Install packages as `root`:
+- Install packages as `root`:
 
 ```bash
 apt-get install unzip curl git
 ```
 
-Install `deno` as `root`:
+- Install `deno` as `root`:
 
 ```bash
 cd /tmp
@@ -23,7 +23,7 @@ cp /tmp/deno /usr/local/bin/
 deno --version
 ```
 
-Get a copy of the repo (_don't run as `root`_):
+- Get a copy of the repo (_don't run as `root`_):
 
 ```bash
 git clone https://github.com/jitsi-contrib/jitok.git
