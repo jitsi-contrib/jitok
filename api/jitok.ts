@@ -198,6 +198,16 @@ async function createToken(inp: Dict): Promise<Token> {
       feat["lobby_bypass"] = false;
     }
   }
+  if (inp.cntx_feat_sip_outbound_call !== undefined) {
+    if (
+      inp.cntx_feat_sip_outbound_call === 1 ||
+      inp.cntx_feat_sip_outbound_call === true
+    ) {
+      feat["sip-outbound-call"] = true;
+    } else {
+      feat["sip-outbound-call"] = false;
+    }
+  }
   // payload.context
   if (Object.keys(user).length) cntx["user"] = user;
   if (Object.keys(feat).length) cntx["features"] = feat;
