@@ -6,14 +6,7 @@
   import FieldSelect from "$lib/components/field-select.svelte";
   import FieldRadio from "$lib/components/field-radio.svelte";
   import { getToken } from "$lib/functions";
-  import {
-    algOptions,
-    affiOptions,
-    recOptions,
-    liveOptions,
-    screenOptions,
-    lobbyOptions,
-  } from "$lib/globals";
+  import { affiOptions, algOptions, defaultOptions } from "$lib/globals";
 
   let host = "https://jitsi.mydomain.com/myroom";
   let hasToken = false;
@@ -37,6 +30,7 @@
     cntx_feat_live: undefined,
     cntx_feat_screen: undefined,
     cntx_feat_lobby_bypass: undefined,
+    cntx_feat_sip_outbound_call: undefined,
   };
 
   async function setToken() {
@@ -78,16 +72,8 @@
         <FieldText name="iss" required={false} bind:value={payload.iss} />
         <FieldText name="sub" required={false} bind:value={payload.sub} />
         <FieldText name="room" required={false} bind:value={payload.room} />
-        <FieldNumber
-          name="nbf (sec)"
-          required={false}
-          bind:value={payload.nbf}
-        />
-        <FieldNumber
-          name="exp (sec)"
-          required={false}
-          bind:value={payload.exp}
-        />
+        <FieldNumber name="nbf (sec)" required={false} bind:value={payload.nbf} />
+        <FieldNumber name="exp (sec)" required={false} bind:value={payload.exp} />
       </div>
 
       <div class="col-lg text-center" style="max-width:540px;">
@@ -124,30 +110,43 @@
       <div class="col-lg text-center" style="max-width:540px;">
         <h5 class="text-muted mt-3">Features</h5>
 
-        <FieldRadio
-          title="recording"
-          name="rec"
-          bind:value={payload.cntx_feat_rec}
-          options={recOptions}
-        />
-        <FieldRadio
-          title="streaming"
-          name="live"
-          bind:value={payload.cntx_feat_live}
-          options={liveOptions}
-        />
-        <FieldRadio
-          title="screen-sharing"
-          name="screen"
-          bind:value={payload.cntx_feat_screen}
-          options={screenOptions}
-        />
-        <FieldRadio
-          title="lobby-bypass"
-          name="lobby_bypass"
-          bind:value={payload.cntx_feat_lobby_bypass}
-          options={lobbyOptions}
-        />
+        <div class="row justify-content-center">
+          <div class="col-6" style="max-width:270px;">
+            <FieldRadio
+              title="recording"
+              name="rec"
+              bind:value={payload.cntx_feat_rec}
+              options={defaultOptions}
+            />
+            <FieldRadio
+              title="streaming"
+              name="live"
+              bind:value={payload.cntx_feat_live}
+              options={defaultOptions}
+            />
+            <FieldRadio
+              title="screen-sharing"
+              name="screen"
+              bind:value={payload.cntx_feat_screen}
+              options={defaultOptions}
+            />
+          </div>
+
+          <div class="col-6" style="max-width:270px;">
+            <FieldRadio
+              title="lobby-bypass"
+              name="lobby_bypass"
+              bind:value={payload.cntx_feat_lobby_bypass}
+              options={defaultOptions}
+            />
+            <FieldRadio
+              title="sip-outbound-call"
+              name="sip-outbound-call"
+              bind:value={payload.cntx_feat_sip_outbound_call}
+              options={defaultOptions}
+            />
+          </div>
+        </div>
       </div>
     </div>
 
