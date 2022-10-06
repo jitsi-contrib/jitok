@@ -21,4 +21,5 @@ export interface Payload {
   cntx_feat_live: undefined | 0 | 1;
   cntx_feat_screen: undefined | 0 | 1;
   cntx_feat_lobby_bypass: undefined | 0 | 1;
+  cntx_feat_sip_outbound_call: undefined | 0 | 1;
 }
