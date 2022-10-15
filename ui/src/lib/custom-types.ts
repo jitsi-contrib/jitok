@@ -10,8 +10,8 @@ export interface Payload {
   iss: string;
   sub: string;
   room: string;
-  nbf: number;
-  exp: number;
+  nbf: string;
+  exp: string;
   cntx_user_id: string;
   cntx_user_name: string;
   cntx_user_email: string;
