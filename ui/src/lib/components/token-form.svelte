@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { Payload } from "$lib/custom-types";
-  import FieldText from "$lib/components/field-text.svelte";
+  import FieldDatetime from "$lib/components/field-datetime.svelte";
   import FieldPassword from "$lib/components/field-password.svelte";
-  import FieldNumber from "$lib/components/field-number.svelte";
-  import FieldSelect from "$lib/components/field-select.svelte";
   import FieldRadio from "$lib/components/field-radio.svelte";
+  import FieldSelect from "$lib/components/field-select.svelte";
+  import FieldText from "$lib/components/field-text.svelte";
   import { getToken } from "$lib/functions";
   import { affiOptions, algOptions, defaultOptions } from "$lib/globals";
 
@@ -12,6 +12,12 @@
   let hasToken = false;
   let token = "no token yet";
   let tokenColor = "text-muted";
+
+  const _time = new Date();
+  const _nbf = new Date(
+    _time.getTime() - 60 * 1000 * _time.getTimezoneOffset(),
+  );
+  const _exp = new Date(_nbf.getTime() + 3600 * 1000);
   let payload: Payload = {
     alg: "HS256",
     secret: "myappsecret",
@@ -19,8 +25,8 @@
     iss: "",
     sub: "*",
     room: "*",
-    nbf: 0,
-    exp: 3600,
+    nbf: _nbf.toISOString().slice(0, 16),
+    exp: _exp.toISOString().slice(0, 16),
     cntx_user_id: "",
     cntx_user_name: "",
     cntx_user_email: "",
@@ -37,8 +43,8 @@
     hasToken = false;
     token = "no token yet";
     tokenColor = "text-muted";
-    payload.nbf = Number(payload.nbf) || 0;
-    payload.exp = Number(payload.exp) || 3600;
+    payload.nbf = payload.nbf;
+    payload.exp = payload.exp;
 
     const _token = await getToken(payload);
 
@@ -72,8 +78,8 @@
         <FieldText name="iss" required={false} bind:value={payload.iss} />
         <FieldText name="sub" required={false} bind:value={payload.sub} />
         <FieldText name="room" required={false} bind:value={payload.room} />
-        <FieldNumber name="nbf (sec)" required={false} bind:value={payload.nbf} />
-        <FieldNumber name="exp (sec)" required={false} bind:value={payload.exp} />
+        <FieldDatetime name="nbf" required={false} bind:value={payload.nbf} />
+        <FieldDatetime name="exp" required={false} bind:value={payload.exp} />
       </div>
 
       <div class="col-lg text-center" style="max-width:540px;">
