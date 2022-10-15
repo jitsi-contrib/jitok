@@ -102,11 +102,25 @@ function validateInput(ps: Dict): Dict {
   }
   // nbf
   if (ps.nbf) {
-    if (typeof ps.nbf !== "number") throw new BadRequest("invalid nbf");
+    if (typeof ps.nbf !== "number") {
+      try {
+        const nbf = new Date(ps.nbf);
+        ps.nbf = nbf;
+      } catch {
+        throw new BadRequest("invalid nbf");
+      }
+    }
   }
   // exp
   if (ps.exp) {
-    if (typeof ps.exp !== "number") throw new BadRequest("invalid exp");
+    if (typeof ps.exp !== "number") {
+      try {
+        const exp = new Date(ps.exp);
+        ps.exp = exp;
+      } catch {
+        throw new BadRequest("invalid exp");
+      }
+    }
   }
 
   return ps;
@@ -159,8 +173,8 @@ async function createToken(inp: Dict): Promise<Token> {
   (inp.iss) ? pl.iss = String(inp.iss) : pl.iss = String(inp.aud);
   if (inp.sub) pl.sub = String(inp.sub);
   if (inp.room) pl.room = String(inp.room);
-  if (inp.nbf) pl.nbf = getNumericDate(Number(inp.nbf));
-  if (inp.exp) pl.exp = getNumericDate(Number(inp.exp));
+  if (inp.nbf) pl.nbf = getNumericDate(inp.nbf);
+  if (inp.exp) pl.exp = getNumericDate(inp.exp);
   // payload.context.user
   if (inp.cntx_user_id) user["id"] = String(inp.cntx_user_id);
   if (inp.cntx_user_name) user["name"] = String(inp.cntx_user_name);
