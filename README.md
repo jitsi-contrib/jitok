@@ -29,10 +29,10 @@ Jitsi token generator API and UI
 - `room`: string
   \
   _default_: `*`
-- `nbf`: number
+- `nbf`: number | string (formatted date)
   \
   _default_: `0` _sec_
-- `exp`: number
+- `exp`: number | string (formatted date)
   \
   _default_: `3600` _sec_
 - `cntx_user_id`: string
