@@ -56,8 +56,8 @@ JSON=$(cat <<EOF
   "secret":"myappsecret",
   "aud":"myappid",
   "room":"*",
-  "nbf":0,
-  "exp":3600,
+  "nbf":"2022-10-15T15:00+02:00",
+  "exp":"2022-10-15T16:30+02:00",
   "cntx_user_id":"1ceb7fbc-beef-42a7-9ca1-a79a042fcba8",
   "cntx_user_name":"myname"
 }
