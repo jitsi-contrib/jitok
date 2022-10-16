@@ -111,6 +111,12 @@
           bind:value={payload.cntx_user_affi}
           options={affiOptions}
         />
+        <FieldRadio
+          title="lobby-bypass"
+          name="lobby_bypass"
+          bind:value={payload.cntx_user_lobby_bypass}
+          options={defaultOptions}
+        />
       </div>
 
       <div class="col-lg text-center" style="max-width:540px;">
@@ -139,12 +145,6 @@
           </div>
 
           <div class="col-6" style="max-width:270px;">
-            <FieldRadio
-              title="lobby-bypass"
-              name="lobby_bypass"
-              bind:value={payload.cntx_user_lobby_bypass}
-              options={defaultOptions}
-            />
             <FieldRadio
               title="sip-outbound-call"
               name="sip-outbound-call"
