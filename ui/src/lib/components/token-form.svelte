@@ -83,7 +83,7 @@
       </div>
 
       <div class="col-lg text-center" style="max-width:540px;">
-        <h5 class="text-muted mt-3">User Profile</h5>
+        <h5 class="text-muted mt-3">User</h5>
 
         <FieldText
           name="username"
