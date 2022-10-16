@@ -8,7 +8,7 @@
   import { getToken } from "$lib/functions";
   import { affiOptions, algOptions, defaultOptions } from "$lib/globals";
 
-  let host = "https://jitsi.mydomain.com/myroom";
+  let host = "https://jitsi.mydomain.corp/myroom";
   let hasToken = false;
   let token = "no token yet";
   let tokenColor = "text-muted";
