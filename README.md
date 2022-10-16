@@ -42,10 +42,10 @@ Jitsi token generator API and UI
   \
   _e.g. https://mydomain.com/images/myavatar.png_
 - `cntx_user_affi`: "owner" | "member"
+- `cntx_user_lobby_bypass`: 0 | 1
 - `cntx_feat_rec`: 0 | 1
 - `cntx_feat_live`: 0 | 1
 - `cntx_feat_screen`: 0 | 1
-- `cntx_feat_lobby_bypass`: 0 | 1
 
 #### curl example
 
