@@ -32,10 +32,10 @@
     cntx_user_email: "",
     cntx_user_avatar: "",
     cntx_user_affi: undefined,
+    cntx_user_lobby_bypass: undefined,
     cntx_feat_rec: undefined,
     cntx_feat_live: undefined,
     cntx_feat_screen: undefined,
-    cntx_feat_lobby_bypass: undefined,
     cntx_feat_sip_outbound_call: undefined,
   };
 
@@ -142,7 +142,7 @@
             <FieldRadio
               title="lobby-bypass"
               name="lobby_bypass"
-              bind:value={payload.cntx_feat_lobby_bypass}
+              bind:value={payload.cntx_user_lobby_bypass}
               options={defaultOptions}
             />
             <FieldRadio

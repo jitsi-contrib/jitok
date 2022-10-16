@@ -181,6 +181,15 @@ async function createToken(inp: Dict): Promise<Token> {
   if (inp.cntx_user_email) user["email"] = String(inp.cntx_user_email);
   if (inp.cntx_user_affi) user["affiliation"] = String(inp.cntx_user_affi);
   if (inp.cntx_user_avatar) user["avatar"] = String(inp.cntx_user_avatar);
+  if (inp.cntx_user_lobby_bypass !== undefined) {
+    if (
+      inp.cntx_user_lobby_bypass === 1 || inp.cntx_user_lobby_bypass === true
+    ) {
+      user["lobby_bypass"] = true;
+    } else {
+      user["lobby_bypass"] = false;
+    }
+  }
   // payload.context.features
   if (inp.cntx_feat_rec !== undefined) {
     if (inp.cntx_feat_rec === 1 || inp.cntx_feat_rec === true) {
@@ -201,15 +210,6 @@ async function createToken(inp: Dict): Promise<Token> {
       feat["screen-sharing"] = true;
     } else {
       feat["screen-sharing"] = false;
-    }
-  }
-  if (inp.cntx_feat_lobby_bypass !== undefined) {
-    if (
-      inp.cntx_feat_lobby_bypass === 1 || inp.cntx_feat_lobby_bypass === true
-    ) {
-      feat["lobby_bypass"] = true;
-    } else {
-      feat["lobby_bypass"] = false;
     }
   }
   if (inp.cntx_feat_sip_outbound_call !== undefined) {
