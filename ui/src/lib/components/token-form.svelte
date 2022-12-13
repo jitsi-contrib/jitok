@@ -17,7 +17,7 @@
   const _nbf = new Date(
     _time.getTime() - 60 * 1000 * _time.getTimezoneOffset(),
   );
-  const _exp = new Date(_nbf.getTime() + 3600 * 1000);
+  const _exp = new Date(_nbf.getTime() + 4 * 3600 * 1000);
   let payload: Payload = {
     alg: "HS256",
     secret: "myappsecret",
