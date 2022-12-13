@@ -193,4 +193,12 @@
       </button>
     </div>
   </div>
+
+  <div class="row justify-content-center">
+    <div class="col text-center text-break" style="max-width:1080px;">
+      {#if hasToken}
+        <h6 class="text-muted mt-3">{host}?jwt={token}</h6>
+      {/if}
+    </div>
+  </div>
 </div>
