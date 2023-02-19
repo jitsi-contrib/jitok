@@ -9,4 +9,3 @@ node_modules
 *~
 *.sw?
 *.log
-package-lock.json
