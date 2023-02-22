@@ -1,6 +1,6 @@
 #### installation
 
-- Install `nodejs` and `git` packages.
+- Install `nodejs`, `yarn` and `git` packages.
 
 - Get a copy of the repo (don't run as `root`):
 
@@ -8,11 +8,11 @@
 git clone https://github.com/jitsi-contrib/jitok.git
 ```
 
-- Install `npm` modules (don't run as `root`):
+- Install modules (don't run as `root`):
 
 ```bash
 cd jitok/ui
-npm install
+yarn install
 ```
 
 #### configuration
@@ -27,12 +27,12 @@ export const API_URL = "http://127.0.0.1:9000/api";
 #### running (dev)
 
 ```bash
-npm run dev -- --host --port 3000
+yarn run dev -- --host --port 3000
 ```
 
 #### running (prod)
 
 ```bash
-npm run build
+yarn run build
 node build/index.js
 ```
