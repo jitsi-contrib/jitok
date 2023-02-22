@@ -1,3 +1,12 @@
+## Dockerized instance
+
+```bash
+docker build -t jitok-api .
+docker run -p 9000:9000 jitok-api
+```
+
+## Standalone setup
+
 #### installation
 
 - Install packages as `root`:
