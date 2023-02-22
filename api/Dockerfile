@@ -1,11 +1,11 @@
 FROM denoland/deno
 
-EXPOSE 9000
+USER deno
 
 WORKDIR /app
 
-USER deno
-
 COPY jitok.ts /app/
+
+EXPOSE 9000
 
 CMD ["deno", "run", "--allow-net", "jitok.ts"]
