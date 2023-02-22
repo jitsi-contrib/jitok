@@ -1,3 +1,12 @@
+## Dockerized instance
+
+```bash
+docker build -t jitok-ui .
+docker run -p 3000:3000 jitok-ui
+```
+
+## Standalone setup
+
 #### installation
 
 - Install `nodejs`, `yarn` and `git` packages.
