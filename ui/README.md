@@ -2,7 +2,7 @@
 
 ```bash
 docker build -t jitok-ui .
-docker run -p 3000:3000 jitok-ui
+docker run -p 3000:3000 -e API_URL=http://127.0.0.1:9000/api jitok-ui
 ```
 
 ## Standalone setup
