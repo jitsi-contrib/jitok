@@ -8,6 +8,7 @@
   import { getToken } from "$lib/functions";
   import { affiOptions, algOptions, defaultOptions } from "$lib/globals";
 
+  let apiUrl: string;
   let host = "https://jitsi.mydomain.corp/myroom";
   let hasToken = false;
   let token = "no token yet";
@@ -46,7 +47,13 @@
     payload.nbf = payload.nbf;
     payload.exp = payload.exp;
 
-    const _token = await getToken(payload);
+    if (!apiUrl) {
+      const res = await fetch("/config/api-url");
+      if (!res.ok) return;
+      apiUrl = await res.text();
+    }
+
+    const _token = await getToken(apiUrl, payload);
 
     if (_token === "error") {
       tokenColor = "text-danger";

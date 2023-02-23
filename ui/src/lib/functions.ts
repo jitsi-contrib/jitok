@@ -1,8 +1,7 @@
-import { API_URL } from "$lib/config";
 import type { Payload } from "$lib/custom-types";
 
-export async function getToken(p: Payload) {
-  const req = new Request(API_URL, {
+export async function getToken(apiUrl: string, p: Payload) {
+  const req = new Request(apiUrl, {
     method: "POST",
     body: JSON.stringify(p),
     mode: "cors",
