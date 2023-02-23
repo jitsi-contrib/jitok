@@ -10,9 +10,7 @@ RUN yarn install
 
 COPY . /app/
 
-ARG API_URL
-
-RUN sh prebuild.sh && yarn build
+RUN yarn build
 
 # ------------------------------------------------------------------------------
 # prod
@@ -21,11 +19,13 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY --from=builder /app/static /app/static
 COPY --from=builder /app/package.json /app/
 COPY --from=builder /app/build /app/build
+RUN chown node:node /app/build/client/config/api-url
 
 USER node
 EXPOSE 3000
 
-CMD ["node", "build/index.js"]
+CMD \
+    [[ -n "$API_URL" ]] && echo $API_URL >/app/build/client/config/api-url; \
+    node build/index.js
