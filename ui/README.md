@@ -26,8 +26,8 @@ yarn install
 
 #### configuration
 
-Set `API_URL` in [src/static/config/api-url](/ui/src/static/config/api-url)
-according to your environment.
+Set `API_URL` in [static/config/api-url](/ui/static/config/api-url) according
+to your environment.
 
 ```text
 http://127.0.0.1:9000/api
