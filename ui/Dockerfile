@@ -9,7 +9,6 @@ COPY package.json yarn.lock /app/
 RUN yarn install
 
 COPY . /app/
-
 RUN yarn build
 
 # ------------------------------------------------------------------------------
@@ -23,10 +22,10 @@ COPY --from=builder /app/package.json /app/
 COPY --from=builder /app/build /app/build
 RUN chown node:node /app/build/client/config/api-url
 
+ENV API_URL "http://127.0.0.1:9000/api"
+
 USER node
 EXPOSE 3000
-
-ENV API_URL "http://127.0.0.1:9000/api"
 
 CMD \
     echo $API_URL >/app/build/client/config/api-url; \
