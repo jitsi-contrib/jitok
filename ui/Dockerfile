@@ -26,6 +26,8 @@ RUN chown node:node /app/build/client/config/api-url
 USER node
 EXPOSE 3000
 
+ENV API_URL "http://127.0.0.1:9000/api"
+
 CMD \
-    [[ -n "$API_URL" ]] && echo $API_URL >/app/build/client/config/api-url; \
+    echo $API_URL >/app/build/client/config/api-url; \
     node build/index.js
