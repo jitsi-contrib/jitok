@@ -20,7 +20,7 @@ WORKDIR /app
 
 COPY --from=builder /app/package.json /app/
 COPY --from=builder /app/build /app/build
-RUN chown node:node /app/build/client/config/api-url
+RUN chown node:node /app/build/client/config -R
 
 ENV API_URL "http://127.0.0.1:9000/api"
 
