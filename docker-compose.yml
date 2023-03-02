@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    build: api/
+    ports:
+      - 9000:9000
+
+  ui:
+    build: ui/
+    ports:
+      - 3000:3000
+    environment:
+      - API_URL=http://127.0.0.1:9000/api
