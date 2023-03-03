@@ -1,7 +1,7 @@
 version: "3"
 
 services:
-  traefik:
+  reverse-proxy:
     image: "traefik:v2.9"
     ports:
       - 80:80
@@ -11,8 +11,8 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedByDefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web-secure.address=:443"
+      - "--entrypoints.reverse-proxy-http.address=:80"
+      - "--entrypoints.reverse-proxy-https.address=:443"
 
   api:
     build: api/
@@ -20,11 +20,11 @@ services:
       - 9000:9000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api-web.rule=PathPrefix(`/api`)"
-      - "traefik.http.routers.api-web.entrypoints=web"
-      - "traefik.http.routers.api-web-secure.rule=PathPrefix(`/api`)"
-      - "traefik.http.routers.api-web-secure.entrypoints=web-secure"
-      - "traefik.http.routers.api-web-secure.tls=true"
+      - "traefik.http.routers.api-http.entrypoints=reverse-proxy-http"
+      - "traefik.http.routers.api-http.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api-https.entrypoints=reverse-proxy-https"
+      - "traefik.http.routers.api-https.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api-https.tls=true"
 
   ui:
     build: ui/
@@ -32,10 +32,10 @@ services:
       - 3000:3000
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.ui-web.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.ui-web.entrypoints=web"
-      - "traefik.http.routers.ui-web-secure.rule=PathPrefix(`/`)"
-      - "traefik.http.routers.ui-web-secure.entrypoints=web-secure"
-      - "traefik.http.routers.ui-web-secure.tls=true"
+      - "traefik.http.routers.ui-http.entrypoints=reverse-proxy-http"
+      - "traefik.http.routers.ui-http.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ui-https.entrypoints=reverse-proxy-https"
+      - "traefik.http.routers.ui-https.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ui-https.tls=true"
     environment:
       - API_URL=/api
