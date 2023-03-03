@@ -39,4 +39,4 @@ services:
       - "traefik.http.routers.ui-https.rule=PathPrefix(`/`)"
       - "traefik.http.routers.ui-https.tls=true"
     environment:
-      - API_URL=/api
+      - "API_URL=/api"
