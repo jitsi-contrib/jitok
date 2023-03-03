@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 
 services:
   reverse-proxy:
@@ -28,6 +28,7 @@ services:
 
   ui:
     build: ui/
+    init: true
     ports:
       - 3000:3000
     labels:
