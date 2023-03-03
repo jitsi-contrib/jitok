@@ -16,8 +16,6 @@ services:
 
   api:
     build: api/
-    ports:
-      - 9000:9000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api-http.entrypoints=reverse-proxy-http"
@@ -29,8 +27,6 @@ services:
   ui:
     build: ui/
     init: true
-    ports:
-      - 3000:3000
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ui-http.entrypoints=reverse-proxy-http"
