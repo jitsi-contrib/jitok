@@ -28,5 +28,6 @@ USER node
 EXPOSE 3000
 
 CMD \
+    echo $API_URL; \
     echo $API_URL >/app/build/client/config/api-url; \
     node build/index.js

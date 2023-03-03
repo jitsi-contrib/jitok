@@ -1,14 +1,41 @@
 version: "3"
 
 services:
+  traefik:
+    image: "traefik:v2.9"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedByDefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.web-secure.address=:443"
+
   api:
     build: api/
     ports:
       - 9000:9000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.api-web.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api-web.entrypoints=web"
+      - "traefik.http.routers.api-web-secure.rule=PathPrefix(`/api`)"
+      - "traefik.http.routers.api-web-secure.entrypoints=web-secure"
+      - "traefik.http.routers.api-web-secure.tls=true"
 
   ui:
     build: ui/
     ports:
       - 3000:3000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ui-web.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ui-web.entrypoints=web"
+      - "traefik.http.routers.ui-web-secure.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.ui-web-secure.entrypoints=web-secure"
+      - "traefik.http.routers.ui-web-secure.tls=true"
     environment:
-      - API_URL=http://127.0.0.1:9000/api
+      - API_URL=/api
