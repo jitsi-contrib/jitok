@@ -109,6 +109,12 @@ function validateInput(ps: Dict): Dict {
       } catch {
         throw new BadRequest("invalid nbf");
       }
+    } else {
+      try {
+        ps.nbf = getNumericDate(ps.nbf);
+      } catch {
+        throw new BadRequest("invalid nbf");
+      }
     }
   }
   // exp
@@ -117,6 +123,12 @@ function validateInput(ps: Dict): Dict {
       try {
         const exp = new Date(String(ps.exp));
         ps.exp = Math.floor(exp.getTime() / 1000);
+      } catch {
+        throw new BadRequest("invalid exp");
+      }
+    } else {
+      try {
+        ps.exp = getNumericDate(ps.exp);
       } catch {
         throw new BadRequest("invalid exp");
       }
