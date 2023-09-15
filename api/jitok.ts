@@ -105,7 +105,7 @@ function validateInput(ps: Dict): Dict {
     if (typeof ps.nbf !== "number") {
       try {
         const nbf = new Date(String(ps.nbf));
-        ps.nbf = nbf;
+        ps.nbf = Math.floor(nbf.getTime() / 1000);
       } catch {
         throw new BadRequest("invalid nbf");
       }
@@ -116,7 +116,7 @@ function validateInput(ps: Dict): Dict {
     if (typeof ps.exp !== "number") {
       try {
         const exp = new Date(String(ps.exp));
-        ps.exp = exp;
+        ps.exp = Math.floor(exp.getTime() / 1000);
       } catch {
         throw new BadRequest("invalid exp");
       }
