@@ -173,8 +173,8 @@ async function createToken(inp: Dict): Promise<Token> {
   (inp.iss) ? pl.iss = String(inp.iss) : pl.iss = String(inp.aud);
   if (inp.sub) pl.sub = String(inp.sub);
   if (inp.room) pl.room = String(inp.room);
-  if (inp.nbf) pl.nbf = getNumericDate(Number(inp.nbf));
-  if (inp.exp) pl.exp = getNumericDate(Number(inp.exp));
+  if (inp.nbf) pl.nbf = Number(inp.nbf);
+  if (inp.exp) pl.exp = Number(inp.exp);
   // payload.context.user
   if (inp.cntx_user_id) user["id"] = String(inp.cntx_user_id);
   if (inp.cntx_user_name) user["name"] = String(inp.cntx_user_name);
