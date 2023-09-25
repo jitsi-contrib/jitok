@@ -36,7 +36,7 @@ http://127.0.0.1:9000/api
 #### running (dev)
 
 ```bash
-yarn run dev -- --host --port 3000
+yarn run dev --host --port 3000
 ```
 
 #### running (prod)
