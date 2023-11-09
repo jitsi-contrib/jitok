@@ -1,8 +1,12 @@
 ## Dockerized instance
 
+Update `static/config/api-url` for `API` URL.
+
 ```bash
 docker build -t jitok-ui .
-docker run -p 3000:3000 -e API_URL=http://127.0.0.1:9000/api jitok-ui
+docker run -p 8080:80 \
+    -v $PWD/static/config/api-url:/usr/share/nginx/html/config/api-url:ro \
+    jitok-ui
 ```
 
 ## Standalone setup
