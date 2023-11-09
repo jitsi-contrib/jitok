@@ -3,6 +3,7 @@
   import FieldDatetime from "$lib/components/field-datetime.svelte";
   import FieldPassword from "$lib/components/field-password.svelte";
   import FieldRadio from "$lib/components/field-radio.svelte";
+  import FieldRadioInline from "$lib/components/field-radio-inline.svelte";
   import FieldSelect from "$lib/components/field-select.svelte";
   import FieldText from "$lib/components/field-text.svelte";
   import { getToken } from "$lib/functions";
@@ -36,7 +37,7 @@
     cntx_user_lobby_bypass: undefined,
     cntx_user_security_bypass: undefined,
     cntx_room_lobby: undefined,
-    cntx_room_password: "",
+    cntx_room_password: undefined,
     cntx_feat_rec: undefined,
     cntx_feat_live: undefined,
     cntx_feat_screen: undefined,
@@ -83,7 +84,7 @@
         <h5 class="text-muted mt-3">System</h5>
 
         <FieldSelect name="alg" bind:value={payload.alg} options={algOptions} />
-        <FieldPassword bind:secret={payload.secret} />
+        <FieldPassword label="secret" bind:secret={payload.secret} />
         <FieldText name="aud" required={true} bind:value={payload.aud} />
         <FieldText name="iss" required={false} bind:value={payload.iss} />
         <FieldText name="sub" required={false} bind:value={payload.sub} />
@@ -116,6 +117,29 @@
           bind:value={payload.cntx_user_avatar}
         />
 
+        <h5 class="text-muted mt-3">Room</h5>
+
+        <FieldPassword
+          label="password"
+          bind:secret={payload.cntx_room_password}
+          required={false}
+        />
+
+        <div class="row justify-content-center">
+          <div class="col-12" style="max-width:540px;">
+            <FieldRadioInline
+              title="lobby"
+              name="lobby"
+              bind:value={payload.cntx_room_lobby}
+              options={defaultOptions}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg text-center" style="max-width:540px;">
+        <h5 class="text-muted mt-3">Permissions</h5>
+
         <div class="row justify-content-center">
           <div class="col-6" style="max-width:270px;">
             <FieldRadio
@@ -124,8 +148,6 @@
               bind:value={payload.cntx_user_affi}
               options={affiOptions}
             />
-          </div>
-          <div class="col-6" style="max-width:270px;">
             <FieldRadio
               title="lobby-bypass"
               name="lobby_bypass"
@@ -133,10 +155,16 @@
               options={defaultOptions}
             />
           </div>
+          <div class="col-6" style="max-width:270px;">
+            <FieldRadio
+              title="security-bypass"
+              name="security_bypass"
+              bind:value={payload.cntx_user_security_bypass}
+              options={defaultOptions}
+            />
+          </div>
         </div>
-      </div>
 
-      <div class="col-lg text-center" style="max-width:540px;">
         <h5 class="text-muted mt-3">Features</h5>
 
         <div class="row justify-content-center">
@@ -153,15 +181,15 @@
               bind:value={payload.cntx_feat_live}
               options={defaultOptions}
             />
+          </div>
+
+          <div class="col-6" style="max-width:270px;">
             <FieldRadio
               title="screen-sharing"
               name="screen"
               bind:value={payload.cntx_feat_screen}
               options={defaultOptions}
             />
-          </div>
-
-          <div class="col-6" style="max-width:270px;">
             <FieldRadio
               title="sip-outbound-call"
               name="sip-outbound-call"
