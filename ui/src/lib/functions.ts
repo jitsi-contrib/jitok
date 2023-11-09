@@ -3,8 +3,8 @@ import type { Payload } from "$lib/custom-types";
 export async function getToken(apiUrl: string, p: Payload) {
   const _p = JSON.parse(JSON.stringify(p));
 
-  // undefined as value is used to differ the empty password and an undefined
-  // one
+  // "undefined" as a string value is used to differ empty and undefined
+  // passwords
   if (_p.cntx_room_password === "undefined") {
     _p.cntx_room_password = undefined;
   }
