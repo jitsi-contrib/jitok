@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let label: string;
   export let secret: string;
 
   let isHidden = true;
@@ -28,7 +29,7 @@
       required
     />
   {/if}
-  <label for="secret">secret</label>
+  <label for="secret">{label}</label>
 
   <span
     class="input-group-text"
