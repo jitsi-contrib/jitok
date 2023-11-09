@@ -1,6 +1,7 @@
 <script lang="ts">
   export let label: string;
-  export let secret: string;
+  export let secret: undefined | string;
+  export let required = true;
 
   let isHidden = true;
 
@@ -18,7 +19,7 @@
       class="form-control"
       id="secret"
       bind:value={secret}
-      required
+      {required}
     />
   {:else}
     <input
@@ -26,7 +27,7 @@
       class="form-control"
       id="secret"
       bind:value={secret}
-      required
+      {required}
     />
   {/if}
   <label for="secret">{label}</label>
