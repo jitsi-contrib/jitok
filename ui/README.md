@@ -41,7 +41,18 @@ yarn run dev --host --port 3000
 
 #### running (prod)
 
+Build the static files:
+
 ```bash
 yarn run build
-node build/index.js
+```
+
+Configure your web server to point to the `build` folder.
+_e.g. for `Nginx`_
+
+```config
+location / {
+    root /home/jitok/ui/build;
+    try_files $uri /index.html;
+}
 ```
