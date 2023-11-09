@@ -168,6 +168,7 @@ async function createToken(inp: Dict): Promise<Token> {
 
   const cryptoKey = await getCryptoKey(String(inp.secret), hash);
   const user: Dict = {};
+  const room: Dict = {};
   const feat: Dict = {};
   const cntx: Dict = {};
   const pl: Payload = {
@@ -187,6 +188,7 @@ async function createToken(inp: Dict): Promise<Token> {
   if (inp.room) pl.room = String(inp.room);
   if (inp.nbf) pl.nbf = Number(inp.nbf);
   if (inp.exp) pl.exp = Number(inp.exp);
+
   // payload.context.user
   if (inp.cntx_user_id) user["id"] = String(inp.cntx_user_id);
   if (inp.cntx_user_name) user["name"] = String(inp.cntx_user_name);
@@ -202,6 +204,29 @@ async function createToken(inp: Dict): Promise<Token> {
       user["lobby_bypass"] = false;
     }
   }
+  if (inp.cntx_user_security_bypass !== undefined) {
+    if (
+      inp.cntx_user_security_bypass === 1 ||
+      inp.cntx_user_security_bypass === true
+    ) {
+      user["security_bypass"] = true;
+    } else {
+      user["security_bypass"] = false;
+    }
+  }
+
+  // payload.context.room
+  if (inp.cntx_room_password !== undefined) {
+    room["password"] = String(inp.cntx_room_password);
+  }
+  if (inp.cntx_room_lobby !== undefined) {
+    if (inp.cntx_room_lobby === 1 || inp.cntx_room_lobby === true) {
+      room["lobby"] = true;
+    } else {
+      room["lobby"] = false;
+    }
+  }
+
   // payload.context.features
   if (inp.cntx_feat_rec !== undefined) {
     if (inp.cntx_feat_rec === 1 || inp.cntx_feat_rec === true) {
@@ -234,8 +259,10 @@ async function createToken(inp: Dict): Promise<Token> {
       feat["sip-outbound-call"] = false;
     }
   }
+
   // payload.context
   if (Object.keys(user).length) cntx["user"] = user;
+  if (Object.keys(room).length) cntx["room"] = room;
   if (Object.keys(feat).length) cntx["features"] = feat;
   if (Object.keys(cntx).length) pl["context"] = cntx;
 
