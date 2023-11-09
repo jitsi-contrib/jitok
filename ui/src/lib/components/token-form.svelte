@@ -48,10 +48,9 @@
     hasToken = false;
     token = "no token yet";
     tokenColor = "text-muted";
-    payload.nbf = payload.nbf;
-    payload.exp = payload.exp;
 
     if (!apiUrl) {
+      // get the hardcoded API URL from ui/static/config/api-url
       const res = await fetch("/config/api-url");
       if (!res.ok) return;
       apiUrl = await res.text();
