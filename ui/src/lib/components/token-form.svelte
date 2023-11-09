@@ -202,15 +202,17 @@
 
     <div class="row justify-content-center">
       <div
-        class="col text-center {tokenColor} text-break mx-3 my-3"
+        class="col text-center {tokenColor} text-break mx-3 my-2"
         style="max-width:1080px;"
       >
         {token}
       </div>
     </div>
 
+    <br />
+
     <div class="row justify-content-center">
-      <div class="col text-center mb-3">
+      <div class="col text-center mb-2">
         <button class="btn btn-secondary" type="submit">Update Token</button>
       </div>
     </div>
@@ -219,7 +221,7 @@
   <hr />
 
   <div class="row justify-content-center">
-    <div class="col input-group my-3" style="max-width:540px;">
+    <div class="col input-group my-2" style="max-width:540px;">
       <input type="text" class="form-control" id="host" bind:value={host} />
       <button
         class="btn btn-secondary input-group-text"
