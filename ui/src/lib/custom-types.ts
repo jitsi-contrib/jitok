@@ -18,6 +18,9 @@ export interface Payload {
   cntx_user_avatar: string;
   cntx_user_affi: undefined | "owner" | "member";
   cntx_user_lobby_bypass: undefined | 0 | 1;
+  cntx_user_security_bypass: undefined | 0 | 1;
+  cntx_room_lobby: undefined | 0 | 1;
+  cntx_room_password: string;
   cntx_feat_rec: undefined | 0 | 1;
   cntx_feat_live: undefined | 0 | 1;
   cntx_feat_screen: undefined | 0 | 1;
