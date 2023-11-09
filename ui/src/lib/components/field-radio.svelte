@@ -18,8 +18,8 @@
           class="form-check-input"
           type="radio"
           {name}
-          id="{name} {optName}"
           bind:group={value}
+          id="{name} {optName}"
           value={optValue}
         />
         <label class="form-check-label" for="{name} {optName}">
