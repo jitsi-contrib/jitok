@@ -37,7 +37,7 @@
     cntx_user_lobby_bypass: undefined,
     cntx_user_security_bypass: undefined,
     cntx_room_lobby: undefined,
-    cntx_room_password: undefined,
+    cntx_room_password: "undefined",
     cntx_feat_rec: undefined,
     cntx_feat_live: undefined,
     cntx_feat_screen: undefined,
