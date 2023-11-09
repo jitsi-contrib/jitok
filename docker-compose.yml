@@ -34,5 +34,5 @@ services:
       - "traefik.http.routers.ui-https.entrypoints=reverse-proxy-https"
       - "traefik.http.routers.ui-https.rule=PathPrefix(`/`)"
       - "traefik.http.routers.ui-https.tls=true"
-    environment:
-      - "API_URL=/api"
+    volumes:
+      - ./config-api-url:/usr/share/nginx/html/config/api-url
