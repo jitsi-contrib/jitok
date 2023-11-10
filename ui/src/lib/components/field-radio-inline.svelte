@@ -11,7 +11,7 @@
 <h6 class="text-muted mt-4">{title}</h6>
 
 {#each options as { optName, optValue }}
-  <div class="form-check form-check-inline">
+  <div class="form-check form-check-inline mx-4">
     <input
       class="form-check-input"
       type="radio"
