@@ -38,3 +38,18 @@ export const defaultOptions = [
     optValue: undefined,
   },
 ];
+
+export const activateOptions = [
+  {
+    optName: "enable",
+    optValue: 1,
+  },
+  {
+    optName: "disable",
+    optValue: 0,
+  },
+  {
+    optName: "don't set",
+    optValue: undefined,
+  },
+];
