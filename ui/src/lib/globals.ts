@@ -26,21 +26,6 @@ export const affiOptions = [
 
 export const defaultOptions = [
   {
-    optName: "enabled",
-    optValue: 1,
-  },
-  {
-    optName: "disabled",
-    optValue: 0,
-  },
-  {
-    optName: "don't set",
-    optValue: undefined,
-  },
-];
-
-export const activateOptions = [
-  {
     optName: "enable",
     optValue: 1,
   },
