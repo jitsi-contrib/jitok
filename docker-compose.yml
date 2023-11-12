@@ -26,7 +26,6 @@ services:
 
   ui:
     build: ui/
-    init: true
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ui-http.entrypoints=reverse-proxy-http"
