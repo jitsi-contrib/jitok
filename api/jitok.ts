@@ -2,7 +2,7 @@
 // jitok.ts
 // ----------------------------------------------------------------------------
 import { serve } from "https://deno.land/std@0.211.0/http/server.ts";
-import { Status } from "https://deno.land/std@0.211.0/http/status.ts";
+import { STATUS_CODE } from "https://deno.land/std@0.211.0/http/status.ts";
 import { Algorithm } from "https://deno.land/x/djwt@v3.0.1/algorithm.ts";
 import {
   create,
@@ -37,7 +37,7 @@ class BadRequest extends Error {
 // ----------------------------------------------------------------------------
 function ok(body: string): Response {
   return new Response(body, {
-    status: Status.OK,
+    status: STATUS_CODE.OK,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -47,21 +47,21 @@ function ok(body: string): Response {
 // ----------------------------------------------------------------------------
 function badRequest(): Response {
   return new Response("BadRequest", {
-    status: Status.BadRequest,
+    status: STATUS_CODE.BadRequest,
   });
 }
 
 // ----------------------------------------------------------------------------
 function forbidden(): Response {
   return new Response("Forbidden", {
-    status: Status.Forbidden,
+    status: STATUS_CODE.Forbidden,
   });
 }
 
 // ----------------------------------------------------------------------------
 function notImplemented(): Response {
   return new Response("NotImplemented", {
-    status: Status.NotImplemented,
+    status: STATUS_CODE.NotImplemented,
   });
 }
 
