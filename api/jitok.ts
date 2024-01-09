@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------------
 // jitok.ts
 // ----------------------------------------------------------------------------
-import { serve } from "https://deno.land/std@0.210.0/http/server.ts";
-import { Status } from "https://deno.land/std@0.210.0/http/http_status.ts";
+import { serve } from "https://deno.land/std@0.211.0/http/server.ts";
+import { Status } from "https://deno.land/std@0.211.0/http/status.ts";
 import { Algorithm } from "https://deno.land/x/djwt@v3.0.1/algorithm.ts";
 import {
   create,
