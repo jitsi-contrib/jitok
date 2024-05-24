@@ -1,0 +1,56 @@
+name: jitok-api
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/jitok-api.yml"
+      - "api/**"
+
+env:
+  CONTEXT: jitok-api
+  MACHINE: api
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Custom metadata
+      run: |
+        echo "BUILD_DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
+        echo ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.CONTEXT }}
+
+    - name: Metadata
+      uses: docker/metadata-action@v5
+      id: meta
+      with:
+        images: |
+          ${{ env.REGISTRY }}/${{ github.repository }}/${{ env.CONTEXT }}
+        tags: |
+          type=raw,value=latest
+          type=raw,value=v${{ env.BUILD_DATE }}
+
+    - name: Login
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: ./${{ env.MACHINE }}
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
