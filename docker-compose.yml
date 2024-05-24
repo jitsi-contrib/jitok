@@ -15,7 +15,8 @@ services:
       - "--entrypoints.reverse-proxy-https.address=:443"
 
   api:
-    build: api/
+    #build: api/
+    image: ghcr.io/jitsi-contrib/jitok/jitok-api:latest
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.api-http.entrypoints=reverse-proxy-http"
@@ -25,7 +26,8 @@ services:
       - "traefik.http.routers.api-https.tls=true"
 
   ui:
-    build: ui/
+    #build: ui/
+    image: ghcr.io/jitsi-contrib/jitok/jitok-ui:latest
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.ui-http.entrypoints=reverse-proxy-http"
