@@ -1,15 +1,14 @@
 // ----------------------------------------------------------------------------
 // jitok.ts
 // ----------------------------------------------------------------------------
-import { serve } from "https://deno.land/std@0.211.0/http/server.ts";
-import { STATUS_CODE } from "https://deno.land/std@0.211.0/http/status.ts";
-import { Algorithm } from "https://deno.land/x/djwt@v3.0.1/algorithm.ts";
+import { STATUS_CODE } from "https://deno.land/std@0.224.0/http/status.ts";
+import { Algorithm } from "https://deno.land/x/djwt@v3.0.2/algorithm.ts";
 import {
   create,
   getNumericDate,
   Header,
   Payload,
-} from "https://deno.land/x/djwt@v3.0.1/mod.ts";
+} from "https://deno.land/x/djwt@v3.0.2/mod.ts";
 
 const HOSTNAME = "0.0.0.0";
 const PORT = 9000;
@@ -305,10 +304,10 @@ async function handler(req: Request): Promise<Response> {
 
 // ----------------------------------------------------------------------------
 function main() {
-  serve(handler, {
+  Deno.serve({
     hostname: HOSTNAME,
     port: PORT,
-  });
+  }, handler);
 }
 
 // ----------------------------------------------------------------------------
