@@ -1,14 +1,10 @@
 // ----------------------------------------------------------------------------
 // jitok.ts
 // ----------------------------------------------------------------------------
-import { STATUS_CODE } from "https://deno.land/std@0.224.0/http/status.ts";
-import { Algorithm } from "https://deno.land/x/djwt@v3.0.2/algorithm.ts";
-import {
-  create,
-  getNumericDate,
-  Header,
-  Payload,
-} from "https://deno.land/x/djwt@v3.0.2/mod.ts";
+import { STATUS_CODE } from "jsr:@std/http/status";
+import { Algorithm } from "jsr:@emrahcom/jwt/algorithm";
+import { create, getNumericDate } from "jsr:@emrahcom/jwt";
+import type { Header, Payload } from "jsr:@emrahcom/jwt";
 
 const HOSTNAME = "0.0.0.0";
 const PORT = 9000;
