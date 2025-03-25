@@ -221,6 +221,16 @@ async function createToken(inp: Dict): Promise<Token> {
       room["lobby"] = false;
     }
   }
+  if (inp.cntx_room_lobby_autostart !== undefined) {
+    if (
+      inp.cntx_room_lobby_autostart === 1 ||
+      inp.cntx_room_lobby_autostart === true
+    ) {
+      room["lobby_autostart"] = true;
+    } else {
+      room["lobby_autostart"] = false;
+    }
+  }
 
   // payload.context.features
   if (inp.cntx_feat_rec !== undefined) {
@@ -283,7 +293,7 @@ async function triggerJWT(req: Request): Promise<Response> {
     const tk = await createToken(inp);
     return await createJWT(tk).then((jwt) => ok(jwt));
   } catch (e) {
-    if (e.name === "BadRequest") return badRequest();
+    if (e instanceof Error && e.name === "BadRequest") return badRequest();
     else return notImplemented();
   }
 }
