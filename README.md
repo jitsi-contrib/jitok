@@ -45,6 +45,7 @@ Jitsi token generator API and UI
 - `cntx_user_lobby_bypass`: 0 | 1
 - `cntx_user_security_bypass`: 0 | 1
 - `cntx_room_lobby`: 0 | 1
+- `cntx_room_lobby_autostart`: 0 | 1
 - `cntx_room_password`: string
 - `cntx_feat_rec`: 0 | 1
 - `cntx_feat_live`: 0 | 1
