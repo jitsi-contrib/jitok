@@ -7,7 +7,12 @@
   import FieldSelect from "$lib/components/field-select.svelte";
   import FieldText from "$lib/components/field-text.svelte";
   import { getToken } from "$lib/functions";
-  import { affiOptions, algOptions, deactivateOptions, defaultOptions } from "$lib/globals";
+  import {
+    affiOptions,
+    algOptions,
+    deactivateOptions,
+    defaultOptions,
+  } from "$lib/globals";
 
   let apiUrl: string;
   let host = "https://jitsi.mydomain.corp/myroom";
