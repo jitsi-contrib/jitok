@@ -38,3 +38,18 @@ export const defaultOptions = [
     optValue: undefined,
   },
 ];
+
+export const deactivateOptions = [
+  {
+    optName: "keep",
+    optValue: 1,
+  },
+  {
+    optName: "deactivate",
+    optValue: 0,
+  },
+  {
+    optName: "don't set",
+    optValue: undefined,
+  },
+];

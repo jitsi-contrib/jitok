@@ -7,7 +7,7 @@
   import FieldSelect from "$lib/components/field-select.svelte";
   import FieldText from "$lib/components/field-text.svelte";
   import { getToken } from "$lib/functions";
-  import { affiOptions, algOptions, defaultOptions } from "$lib/globals";
+  import { affiOptions, algOptions, deactivateOptions, defaultOptions } from "$lib/globals";
 
   let apiUrl: string;
   let host = "https://jitsi.mydomain.corp/myroom";
@@ -37,6 +37,7 @@
     cntx_user_lobby_bypass: undefined,
     cntx_user_security_bypass: undefined,
     cntx_room_lobby: undefined,
+    cntx_room_lobby_autostart: undefined,
     cntx_room_password: "undefined",
     cntx_feat_rec: undefined,
     cntx_feat_live: undefined,
@@ -131,6 +132,17 @@
               name="lobby"
               bind:value={payload.cntx_room_lobby}
               options={defaultOptions}
+            />
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12" style="max-width:540px;">
+            <FieldRadioInline
+              title="lobby-autostart"
+              name="lobby-autostart"
+              bind:value={payload.cntx_room_lobby_autostart}
+              options={deactivateOptions}
             />
           </div>
         </div>
