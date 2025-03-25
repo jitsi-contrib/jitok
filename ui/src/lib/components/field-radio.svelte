@@ -8,7 +8,7 @@
 </script>
 
 <!-- -------------------------------------------------------------------------->
-<h6 class="text-muted mt-4">{title}</h6>
+<h6 class="text-muted mt-4 fw-semibold">{title}</h6>
 
 <div class="row row-cols-auto justify-content-center">
   <div class="col">

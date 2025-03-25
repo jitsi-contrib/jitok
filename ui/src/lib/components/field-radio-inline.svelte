@@ -8,7 +8,7 @@
 </script>
 
 <!-- -------------------------------------------------------------------------->
-<h6 class="text-muted mt-4">{title}</h6>
+<h6 class="text-muted mt-4 fw-semibold">{title}</h6>
 
 {#each options as { optName, optValue }}
   <div class="form-check form-check-inline mx-4">
