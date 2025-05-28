@@ -47,7 +47,7 @@
     cntx_feat_rec: undefined,
     cntx_feat_live: undefined,
     cntx_feat_screen: undefined,
-    cntx_feat_sip_outbound_call: undefined,
+    cntx_feat_transcription: undefined,
   };
 
   async function setToken() {
@@ -207,9 +207,9 @@
               options={defaultOptions}
             />
             <FieldRadio
-              title="sip-outbound-call"
-              name="sip-outbound-call"
-              bind:value={payload.cntx_feat_sip_outbound_call}
+              title="transcription"
+              name="transcription"
+              bind:value={payload.cntx_feat_transcription}
               options={defaultOptions}
             />
           </div>

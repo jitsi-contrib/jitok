@@ -235,33 +235,33 @@ async function createToken(inp: Dict): Promise<Token> {
   // payload.context.features
   if (inp.cntx_feat_rec !== undefined) {
     if (inp.cntx_feat_rec === 1 || inp.cntx_feat_rec === true) {
-      feat["recording"] = true;
+      feat["recording"] = "true";
     } else {
-      feat["recording"] = false;
+      feat["recording"] = "false";
     }
   }
   if (inp.cntx_feat_live !== undefined) {
     if (inp.cntx_feat_live === 1 || inp.cntx_feat_live === true) {
-      feat["livestreaming"] = true;
+      feat["livestreaming"] = "true";
     } else {
-      feat["livestreaming"] = false;
+      feat["livestreaming"] = "false";
     }
   }
   if (inp.cntx_feat_screen !== undefined) {
     if (inp.cntx_feat_screen === 1 || inp.cntx_feat_screen === true) {
-      feat["screen-sharing"] = true;
+      feat["screen-sharing"] = "true";
     } else {
-      feat["screen-sharing"] = false;
+      feat["screen-sharing"] = "false";
     }
   }
-  if (inp.cntx_feat_sip_outbound_call !== undefined) {
+  if (inp.cntx_feat_transcription !== undefined) {
     if (
-      inp.cntx_feat_sip_outbound_call === 1 ||
-      inp.cntx_feat_sip_outbound_call === true
+      inp.cntx_feat_transcription === 1 ||
+      inp.cntx_feat_transcription === true
     ) {
-      feat["sip-outbound-call"] = true;
+      feat["transcription"] = "true";
     } else {
-      feat["sip-outbound-call"] = false;
+      feat["transcription"] = "false";
     }
   }
 

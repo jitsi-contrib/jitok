@@ -50,6 +50,7 @@ Jitsi token generator API and UI
 - `cntx_feat_rec`: 0 | 1
 - `cntx_feat_live`: 0 | 1
 - `cntx_feat_screen`: 0 | 1
+- `cntx_feat_transcription`: 0 | 1
 
 #### curl example
 
