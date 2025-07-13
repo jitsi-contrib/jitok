@@ -12,7 +12,7 @@
 
 <div class="row row-cols-auto justify-content-center">
   <div class="col">
-    {#each options as { optName, optValue }}
+    {#each options as { optName, optValue } (optName)}
       <div class="form-check text-start">
         <input
           class="form-check-input"
