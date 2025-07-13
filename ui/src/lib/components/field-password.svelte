@@ -39,9 +39,9 @@
     on:click={toggleVisibility}
   >
     {#if isHidden}
-      <span class="bi bi-eye-fill" />
+      <span class="bi bi-eye-fill"></span>
     {:else}
-      <span class="bi bi-eye-slash-fill" />
+      <span class="bi bi-eye-slash-fill"></span>
     {/if}
   </span>
 </div>
