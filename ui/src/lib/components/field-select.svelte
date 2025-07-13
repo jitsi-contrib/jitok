@@ -9,7 +9,7 @@
 <!-- -------------------------------------------------------------------------->
 <div class="form-floating my-1">
   <select class="form-select" id={name} bind:value>
-    {#each options as { optName, optValue }}
+    {#each options as { optName, optValue } (optName)}
       <option value={optValue}>{optName}</option>
     {/each}
   </select>
