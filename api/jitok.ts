@@ -65,7 +65,7 @@ function validateInput(ps: Dict): Dict {
   // secret
   if (!ps.secret) throw new BadRequest("secret not found");
   if (typeof ps.secret !== "string") throw new BadRequest("invalid secret");
-  if (!ps.secret.match("^[0-9a-zA-Z _.!@#$*+-]+$")) {
+  if (!ps.secret.match("^[0-9a-zA-Z _.!@#$*+/=-]+$")) {
     throw new BadRequest("invalid character in secret");
   }
   // aud
