@@ -1,10 +1,10 @@
 // ----------------------------------------------------------------------------
 // jitok.ts
 // ----------------------------------------------------------------------------
-import { STATUS_CODE } from "jsr:@std/http/status";
-import { Algorithm } from "jsr:@emrahcom/jwt/algorithm";
-import { create, getNumericDate } from "jsr:@emrahcom/jwt";
-import type { Header, Payload } from "jsr:@emrahcom/jwt";
+import { STATUS_CODE } from "jsr:@std/http@^1.0.20/status";
+import { Algorithm } from "jsr:@emrahcom/jwt@^0.4.7/algorithm";
+import { create, getNumericDate } from "jsr:@emrahcom/jwt@^0.4.7";
+import type { Header, Payload } from "jsr:@emrahcom/jwt@^0.4.7";
 
 const HOSTNAME = "0.0.0.0";
 const PORT = 9000;
