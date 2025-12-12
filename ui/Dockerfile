@@ -3,6 +3,8 @@
 # ------------------------------------------------------------------------------
 FROM node:24-alpine as builder
 
+ENV BUILT_AT=20251212-1
+
 WORKDIR /app
 
 COPY package.json yarn.lock /app/

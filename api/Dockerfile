@@ -1,5 +1,7 @@
 FROM denoland/deno
 
+ENV BUILT_AT=20251212-1
+
 WORKDIR /app
 
 COPY jitok.ts /app/
