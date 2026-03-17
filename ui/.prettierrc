@@ -1,6 +1,5 @@
 {
   "useTabs": false,
-  "tabWidth": 2,
   "singleQuote": false,
   "trailingComma": "all",
   "printWidth": 80,
@@ -12,5 +11,6 @@
         "parser": "svelte"
       }
     }
-  ]
+  ],
+  "tabWidth": 2
 }
