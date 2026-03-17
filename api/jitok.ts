@@ -1,10 +1,10 @@
 // ----------------------------------------------------------------------------
 // jitok.ts
 // ----------------------------------------------------------------------------
-import { STATUS_CODE } from "jsr:@std/http@^1.0.20/status";
-import { Algorithm } from "jsr:@emrahcom/jwt@^0.4.7/algorithm";
-import { create, getNumericDate } from "jsr:@emrahcom/jwt@^0.4.7";
-import type { Header, Payload } from "jsr:@emrahcom/jwt@^0.4.7";
+import { STATUS_CODE } from "jsr:@std/http@^1.0.25/status";
+import { Algorithm } from "jsr:@emrahcom/jwt@^0.4.8/algorithm";
+import { create, getNumericDate } from "jsr:@emrahcom/jwt@^0.4.8";
+import type { Header, Payload } from "jsr:@emrahcom/jwt@^0.4.8";
 
 const HOSTNAME = "0.0.0.0";
 const PORT = 9000;
@@ -309,11 +309,26 @@ async function handler(req: Request): Promise<Response> {
 }
 
 // ----------------------------------------------------------------------------
-function main() {
-  Deno.serve({
-    hostname: HOSTNAME,
-    port: PORT,
-  }, handler);
+async function main() {
+  const controller = new AbortController();
+  const shutdown = () => controller.abort();
+  Deno.addSignalListener("SIGINT", shutdown);
+  Deno.addSignalListener("SIGTERM", shutdown);
+
+  try {
+    // start the API server
+    const server = Deno.serve({
+      hostname: HOSTNAME,
+      port: PORT,
+      signal: controller.signal,
+    }, handler);
+
+    // wait the server until the clean shutdown
+    await server.finished;
+  } finally {
+    Deno.removeSignalListener("SIGINT", shutdown);
+    Deno.removeSignalListener("SIGTERM", shutdown);
+  }
 }
 
 // ----------------------------------------------------------------------------

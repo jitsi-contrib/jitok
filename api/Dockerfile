@@ -1,6 +1,6 @@
 FROM denoland/deno
 
-ENV BUILT_AT=20251212-1
+ENV BUILT_AT=20260317-1
 
 WORKDIR /app
 
@@ -9,5 +9,5 @@ RUN deno cache /app/jitok.ts
 
 USER deno
 EXPOSE 9000
-
-CMD ["deno", "run", "--allow-net", "jitok.ts"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["run", "--allow-net", "jitok.ts"]
